@@ -10,18 +10,20 @@
 
 ## `Informacion General`
 
-#### Los movimientos de transacciones (pagos, bajas, altas, anulaciones) de los clientes de Seguros Rimac son reportado por el banco mediante tramas(linea de texto), las cuales son cargadas al sistema SAS para registrar dichas transacciones en las bases del sistema. Algunas de estos registros resultaron en error, por diferentes razones, y se fueron acumulando a travez de los años, lo cual provoco inconsistencia en el historias de transacciones de los cliente. Por esta razon se inicio este proyecto con la finalidad analizar los errores para encontrar la mejor manera de regularizarlos o corregirlos
+#### Los movimientos de transacciones (pagos, bajas, altas, anulaciones) de los clientes de Seguros Rimac son reportados por el banco mediante tramas(linea de texto), las cuales son cargadas al sistema SAS para registrar dichas transacciones en sus bases datos. Algunos de estos registros resultaron en error, por diferentes razones y se fueron acumulando a travez de los años, lo cual provocó inconsistencia en el historial de transacciones de los cliente. Por esta razon se inicio este proyecto que tiene como objetivo analizar los errores para encontrar la mejor manera de regularizarlos o corregirlos
 
 ## `Tecnologias Utilizadas`
 
-#### - Se utilizó Python version 3.11 y varias librerias como: *`Pandas, zipfile, json, numpy, os, datetime, google.cloud(storage, bigquery), `
+#### - Se utilizó Python version 3.13 y varias librerias como: *`pyspark, pandas, zipfile, json, numpy, os, sys, io, datetime, google.cloud (storage, bigquery), awsglue, boto3`
 #### - Jupyter notebooks.
-#### - GCP (Cloud Storage, BigQuery)
+#### - GCP (Cloud Storage, BigQuery, Colab notebooks)
 #### - AWS (S3, Glue, Athena, Lambda, Step Functions, EC2, VPC, RedShift, SQS, EventBrigde)
+#### - Power BI
+#### - Power Automate
 
 ## `Data Lake`
 
-#### Se utilizo Cloud Storage como Data Lake en el cual se almaceno todos los archivos crudos de los reportes de errores historicos. 
+#### Se utilizó Cloud Storage como Data Lake en el cual se almaceno todos los archivos crudos de los reportes de errores historicos. 
 #### Tambien se Utilizo AWS S3 para almacenar "tramas diarias" crudas y las tramas procesadas en formato .parquet
 
 ## `Data WareHouse`
