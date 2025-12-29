@@ -1,0 +1,64 @@
+{
+  "Comment": "Ejecutar Job1 y luego Job2 y Job3 en paralelo",
+  "StartAt": "Procesar Trama",
+  "States": {
+    "Procesar Trama": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::glue:startJobRun.sync",
+      "Parameters": {
+        "JobName": "ETL_Tramas_txt",
+        "Arguments.$": "$.glueArguments"
+      },
+      "ResultPath": "$.job_result",
+      "Next": "Leer Output"
+    },
+    "Leer Output": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::aws-sdk:s3:getObject",
+      "Parameters": {
+        "Bucket": "tramasdiarias-procesadas",
+        "Key.$": "States.Format('job_outputs/{}.json', $.job_result.Id)"
+      },
+      "ResultSelector": {
+        "output.$": "States.StringToJson($.Body)"
+      },
+      "ResultPath": "$.job_outputs",
+      "Next": "Ejecutar Jobs en paralelo"
+    },
+    "Ejecutar Jobs en paralelo": {
+      "Type": "Parallel",
+      "Branches": [
+        {
+          "StartAt": "Crear DB en DataCatalog",
+          "States": {
+            "Crear DB en DataCatalog": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::glue:startJobRun.sync",
+              "Parameters": {
+                "JobName": "Update_db_DataCatalog"
+              },
+              "End": true
+            }
+          }
+        },
+        {
+          "StartAt": "Guardar en RedShift",
+          "States": {
+            "Guardar en RedShift": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::glue:startJobRun.sync",
+              "Parameters": {
+                "JobName": "enviar_trama_redshift",
+                "Arguments": {
+                  "--input_path.$": "$.job_outputs.output.output_path"
+                }
+              },
+              "End": true
+            }
+          }
+        }
+      ],
+      "End": true
+    }
+  }
+}
