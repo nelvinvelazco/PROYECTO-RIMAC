@@ -14,7 +14,7 @@ Los movimientos de transacciones (pagos, bajas, altas, anulaciones) de los clien
 </p> 
 
 <p align="left">
-  <img src="src/capturas/Arquitectura AWS.png" width="700">
+  <img src="src/capturas/Arquitectura AWS.png" width="800">
 </p> 
 
 -  **Ingesta de datos desde fuentes externas.**  
@@ -34,7 +34,7 @@ Cloud Storage, BigQuery, Colab notebooks
 - **AWS**  
 S3, Glue, Athena, Lambda, Step Functions, EC2, VPC, RedShift, SQS, EventBrigde
 - **Lenguajes**  
-_ Se utilizó Python version 3.13 y varias librerias como: *pyspark, pandas, zipfile, json, numpy, os, sys, io, datetime, google.cloud (storage, bigquery), awsglue, boto3*. 
+Se utilizó Python version 3.13 y varias librerias como: *pyspark, pandas, zipfile, json, numpy, os, sys, io, datetime, google.cloud (storage, bigquery), awsglue, boto3*. 
 _ SQL
 - **Otros**  
 _ Jupyter notebooks.  
