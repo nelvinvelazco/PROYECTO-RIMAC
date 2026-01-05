@@ -9,10 +9,12 @@
 Los movimientos de transacciones (pagos, bajas, altas, anulaciones) de los clientes de Seguros Rimac son reportados por el banco mediante tramas(linea de texto), las cuales son cargadas al sistema SAS para registrar dichas transacciones en sus bases datos. Algunos de estos registros resultaron en error, por diferentes razones y se fueron acumulando a travez de los años, lo cual provocó inconsistencia en el historial de transacciones de los cliente. Por esta razon se inicio este proyecto que tiene como objetivo analizar los errores para encontrar la mejor manera de regularizarlos o corregirlos
 
 ## 🏗️ `Arquitectura`
+- GCP
 <p align="left">
   <img src="src/capturas/Arquitectura GCP.png" width="600">
 </p> 
 
+- AWS
 <p align="left">
   <img src="src/capturas/Arquitectura AWS.png" width="800">
 </p> 
@@ -60,4 +62,18 @@ _ Power Automate.
 
  Aqui se muestran algunos pantallazos de estas visualizaciones:
 
+<p align="left">
+  <img src="src/capturas/errores detallados.png" width="650">
+</p> 
 
+<p align="left">
+  <img src="src/capturas/errores montos primas.png" width="650">
+</p> 
+
+<p align="left">
+  <img src="src/capturas/errores cantidad primas.png" width="650">
+</p> 
+
+<p align="left">
+  <img src="src/capturas/tramas diarias.png" width="650">
+</p> 
